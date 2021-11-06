@@ -1,0 +1,14 @@
+{% extends 'main/password/base.html' %}
+
+{% block content %}
+    {% if email %}
+        <button style="margin-top: 60px;" class="btn btn-block btn-primary" onclick="window.location.href='{% url 'main:forget_password_email' username %}'">使用邮箱修改密码</button>
+    {% endif %}
+    {% if email and question %}
+        <br/>
+    {% endif %}
+    {% if question %}
+        <button style="margin-top: 60px;" class="btn btn-block btn-primary" onclick="window.location.href='{% url 'main:forget_password_question' username %}'">使用密保修改密码</button>
+    {% endif %}
+
+{% endblock %}

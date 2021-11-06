@@ -1,0 +1,38 @@
+{% extends 'main/password/base.html' %}
+
+{% block content %}
+    <form action="{% url 'main:forget_password_question' username %}" onsubmit="return checkPassword()" method="post">
+    {% csrf_token %}
+        <div class="form-group">
+            <label for="newPassword">新密码</label>
+            <input id="newPassword" type="password" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="newPasswordC">新密码确认</label>
+            <input id="newPasswordC" name="new_password" type="password" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="question">密保问题</label>
+            <input id="question" type="text" class="form-control" value="{{ question }}" disabled>
+        </div>
+        <div class="form-group">
+            <label for="answer">问题答案</label>
+            <input id="answer" name="answer" type="text" class="form-control" required>
+        </div>
+        <div id="tip" style="color: red;"></div>
+    <button type="submit" class="btn btn-primary btn-block">提交</button>
+    </form>
+{% endblock %}
+
+{% block script %}
+    <script>
+    function checkPassword() {
+        if ($('#newPassword').val() !== $('#newPasswordC').val()) {
+            $('#tip').html('两次输入的密码不一致！')
+            return false
+        } else {
+            return true
+        }
+    }
+    </script>
+{% endblock %}

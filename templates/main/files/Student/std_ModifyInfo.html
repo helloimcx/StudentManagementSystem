@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8 />
+<title>修改常用信息</title>
+<link rel="stylesheet" rev="stylesheet" href="../../../../static/css/style.css"
+			type="text/css" media="all" />
+
+ <script type="text/javascript" src="/static/js/school/jquery-1.10.2-vsdoc.js"></script>
+<script src="/static/js/jquery-1.10.2.min.js"></script>
+<script src="/static/js/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="/static/js/school/school.js"></script>
+<style type="text/css">
+.STYLE1 {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+div {
+	font-size: 16px
+}
+</style>
+</head>
+
+<body>
+<div id="lurubiao" style="margin-left:10px">
+					<table width="99%" border="0" cellpadding="0" cellspacing="4"
+						class="CContent">
+						<th class="tablestyle_title">
+								修改常用信息
+						    </th>
+						</tr>
+						<tr>
+						<td>
+	<form action="" method="post" id="form1" enctype=multipart/form-data>
+        {% csrf_token %}
+   <table width="100%" border="0" cellpadding="4" cellspacing="8" class="newfont03" style="border-collapse:collapse">
+
+	<tr>
+	    <td bordercolor="#F0F0F0" width="40%">
+		        <div align="right"><span class="STYLE1">个人邮箱</span>&nbsp;</div>
+		</td>
+		<td bordercolor="#F0F0F0" width="60%">
+		     <input type="text" name="IdentityNum" value="{{ Stuinfo.email }}">
+		</td>
+	</tr>
+     <tr>
+	   <td bordercolor="#F0F0F0" width="40%">
+		        <div align="right"><span class="STYLE1">银行账号</span>&nbsp;</div>
+		</td>
+		<td bordercolor="#F0F0F0" width="60%">
+		      <input type="text" name="PersonalTele" value="{{ Stuinfo.bankcard }}">
+		</td>
+	</tr>
+	 <tr>
+	    <td bordercolor="#F0F0F0" width="40%">
+		        <div align="right"><span class="STYLE1">手机号</span>&nbsp;</div>
+		</td>
+		<td bordercolor="#F0F0F0" width="60%">
+		       <input type="text" name="mobilePhone" value="{{ Stuinfo.telephone }}">
+		</td>
+	</tr>
+	 <tr>
+	    <td bordercolor="#F0F0F0" width="40%">
+		        <div align="right"><span class="STYLE1">照片</span>&nbsp;</div>
+		</td>
+		<td bordercolor="#F0F0F0" width="60%">
+		       <input type="file" name="photo" value="{{ Stuinfo.photo }}"/>
+		</td>
+	</tr>
+	<tr>
+	    <td bordercolor="#F0F0F0" width="40%">
+		        <div align="right"><span class="STYLE1">家庭联系人</span>&nbsp;</div>
+		</td>
+		<td bordercolor="#F0F0F0" width="60%">
+		       <input type="text" name="Family" value="{{ Stuinfo.family }}">
+		</td>
+	</tr>
+	 <tr>
+	    <td bordercolor="#F0F0F0" width="40%">
+		        <div align="right"><span class="STYLE1">家庭通讯地址</span>&nbsp;</div>
+		</td>
+		<td bordercolor="#F0F0F0" width="60%">
+		       <input type="text" name="FamilyLocation" value="{{ Stuinfo.address }}">
+		</td>
+	</tr>
+	<tr>
+	    <td bordercolor="#F0F0F0" width="40%">
+		        <div align="right"><span class="STYLE1">家庭联系电话</span>&nbsp;</div>
+		</td>
+		<td bordercolor="#F0F0F0" width="60%">
+		       <input type="text" name="FamilyTele" value="{{ Stuinfo.fphone }}">
+		</td>
+	</tr>
+	 <tr>
+	    <td bordercolor="#F0F0F0" colspan="2">
+				      <div align="center">
+  <input type="submit" value="确定"/>
+  &nbsp;&nbsp
+  <input type="reset" value="重置" />
+                      </div>
+		</td>
+	</tr>
+   </table>
+                {% csrf_token %}
+   </form>
+    </td>
+   </tr>
+   </table>
+   </div>
+</body>
+
+<script type="text/javascript">
+    $(function () {
+        /** 验证文件是否导入成功  */
+        $("#form1").ajaxForm(function (data) {
+            console.log('1')
+            if (data == "0k") {
+                alert("提交成功！");
+            }
+        });
+    });
+    </style>
+</html>

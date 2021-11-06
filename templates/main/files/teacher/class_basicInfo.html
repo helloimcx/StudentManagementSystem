@@ -1,0 +1,503 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>学生信息管理系统</title>
+    <link href="/static/css/css.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/css/arrow.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/college/tanchu.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/school/tanchu.css"><!-- 需要放到公共的js包下-->
+    <script type="text/javascript" src="/static/js/school/jquery-1.10.2-vsdoc.js"></script>
+    <script src="/static/js/jquery-1.10.2.min.js"></script>
+    <script src="/static/js/jquery-1.10.2.js"></script>
+    <script src="/static/js/provincesdata.js"></script>
+    <script src="/static/js/jquery.provincesCity.js"></script>
+    <script src="/static/js/jquery.chromatable.js"></script>
+    <script type="text/javascript" src="/static/js/school/school.js"></script>
+    <script src="/static/js/jquery-1.10.2.min.js"></script>
+    <script src="/static/js/college/college.js"></script>
+    <script src="/static/js/college/entry.js"></script>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        .demo {
+            border: solid 1px #D5D5D5;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .demo td {
+            border: 1px solid #D5D5D5;
+            font-size: 12px;
+            padding: 7px 5px;
+        }
+
+        .demo th {
+            background-color: #EEE;
+            border-right: 1px solid #D5D5D5;
+            font-size: 13.5px;
+            line-height: 120%;
+            font-weight: bold;
+            padding: 8px 5px;
+            text-align: left;
+        }
+    </style>
+
+</head>
+
+
+<body>
+{% include 'main/files/top.html' %}
+<form name="fom" id="fom" method="post" action="">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+        <tr>
+            <td height="30">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td height="62" background="../../../../static/images/nav04.gif">
+
+                            <table width="98%" border="0" align="center" cellpadding="0"
+                                   cellspacing="0">
+                                <tr>
+                                    <td width="21">
+                                        <img src="../../../../static/images/ico07.gif" width="20" height="18"/>
+                                    </td>
+                                    <td width="538">
+                                        <input id="inputStudentNo" name="condition" type="text" size="16"  placeholder="请输入学号" />
+                                        <input name="find" type="button" class="right-button02"
+                                               value="查询" onclick="popupp('#SchStuBasicInfoDiv', '#getSchStuBasicInfoDiv', '#CloseBasicInfo',$('#inputStudentNo').val())"/>
+
+                                    </td>
+                                    <td width="15%" align="center" style="position:relative;left:-80px">
+                                        <div class="suckerdiv">
+                                            <ul id="suckertree1">
+
+                                                <li>
+                                                    <a href="#">录入</a>
+                                                    <ul>
+                                                        <li>
+                                                            <a href="#" onclick="manually('entryStuBasicInfo')">手动录入</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div id="allbasicMsg" style="display: block">
+                    <table id="subtree1" width="100%" border="0"
+                           cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td class="CPanel">
+                                <div id="liulanbiao" style="margin-left: 10px">
+                                    <table width="99%" border="0" cellpadding="0" cellspacing="0"
+                                           class="CContent">
+                                        <tr>
+                                            <td class="CPanel">
+                                                <table width="100%" border="0" align="center"
+                                                       cellpadding="0" cellspacing="0">
+                                                    <tr>
+                                                        <td height="40" class="font42">
+                                                            <table width="100%" border="0" cellpadding="4"
+                                                                   cellspacing="1" bgcolor="#464646" class="demo"
+                                                                   id="tableID">
+                                                                <thead>
+                                                                <tr class="CTitle">
+                                                                    <td height="22" colspan="12" align="center"
+                                                                        style="font-size: 16px">
+                                                                        学生基本信息表
+                                                                    </td>
+                                                                </tr>
+                                                                <tr bgcolor="#EEEEEE">
+                                                                    <th width="8%">
+                                                                        学号
+                                                                    </th>
+                                                                    <th width="6%">
+                                                                        姓名
+                                                                    </th>
+                                                                    <th width="5%">
+                                                                        学院
+                                                                    </th>
+                                                                    <th width="10%">
+                                                                        专业方向
+                                                                    </th>
+                                                                    <th width="8%">
+                                                                        班级
+                                                                    </th>
+                                                                    <th width="9%">
+                                                                        性别
+                                                                    </th>
+                                                                    <th width="8%">
+                                                                        名族
+                                                                    </th>
+                                                                    <th width="8%">
+                                                                        籍贯
+                                                                    </th>
+                                                                    <th width="6%">
+                                                                        政治面貌
+                                                                    </th>
+                                                                    <th width="15%">
+                                                                        身份证号
+                                                                    </th>
+                                                                    <th width="12%">
+                                                                        手机号码
+                                                                    </th>
+                                                                </tr>
+                                                                {% for i in Stuinfo_list %}
+                                                                    <tr bgcolor="#FFFFFF">
+                                                                        <td>
+                                                                            <a href="#"
+                                                                               onclick="popupp('#SchStuBasicInfoDiv', '#getSchStuBasicInfoDiv', '#CloseBasicInfo','{{ i.studentNo }}')">{{ i.studentNo }}</a>
+                                                                        </td>
+                                                                        <td>
+                                                                            {{ i.studentName }}
+                                                                        </td>
+                                                                        <td>
+                                                                            {{ i.college }}
+                                                                        </td>
+                                                                        <td>
+                                                                            {{ i.major }}
+                                                                        </td>
+                                                                        <td>
+                                                                            {{ i.ClassName }}
+                                                                        </td>
+                                                                        <td>
+                                                                            {{ i.sex }}
+                                                                        </td>
+                                                                        <td>
+                                                                            {{ i.nation }}
+                                                                        </td>
+                                                                        <td>
+                                                                            {{ i.hometown }}
+                                                                        </td>
+                                                                        <td>
+                                                                            {{ i.political }}
+                                                                        </td>
+
+                                                                        <td>
+                                                                            {{ i.idcard }}
+                                                                        </td>
+                                                                        <td>
+                                                                            {{ i.telephone }}
+                                                                        </td>
+                                                                    </tr>
+                                                                {% endfor %}
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                                <table width="95%" border="0" align="center"
+                                                       cellpadding="0" cellspacing="0">
+                                                    <tr>
+                                                        <td height="6">
+                                                            <img src="../../../../static/images/spacer.gif" width="1"
+                                                                 height="1"/>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+            </td>
+        </tr>
+    </table>
+</form>
+<!--查看学生详细基本信息-->
+<div id="SchStuBasicInfoDiv" style="display: none"></div>
+<div id="getSchStuBasicInfoDiv" style="display: none">
+    <h2>学生基本信息<a href="#" id="CloseBasicInfo">关闭</a></h2>
+    <div class="form">
+        <form id="tableedit" action="" method="post">
+            <table width="100%" border="0" cellpadding="4" cellspacing="1" bgcolor="#464646" class="demo" id="tableID">
+
+                <tr class="CTitle">
+                    <td height="22" colspan="12" align="center" style="font-size: 16px">
+                        学生基本信息表
+                        &nbsp;
+                        <input type="button" name="modify" onclick="sedit()" value="修改"/>
+                        &nbsp;
+                        <button type="button" id="sdelete">删除</button>
+                    </td>
+                </tr>
+
+                <tbody id="ffff">
+
+                </tbody>
+            </table>
+            <div id="ssave" style="display: none">
+                <div style="padding:1px" align="center" colspan="12" bgcolor="white">
+                    <button type="button" id="ssave">提交</button>
+
+                </div>
+            </div>
+            {% csrf_token %}
+        </form>
+    </div>
+</div>
+<!--高级查询条件-->
+<form name="fom" id="fom" method="post" action="">
+    <div id="advancedDiv" style="display: none"></div>
+    <div id="advancedSearchDiv" style="display: none">
+        <h2>高级查询选项<a href="#" id="CloseadvancedSearch">关闭</a></h2>
+        <div class="form">
+            <table width="50%" border="0" cellpadding="4" cellspacing="1" bgcolor="#464646" class="demo"
+                   id="advancedSearchTab">
+
+                <tr bgcolor="#FFFFFF" align="center">
+                    <td width='15%' name='projectName'>
+                        性别
+                    </td>
+                    <td width='35%' name='sex'>
+                        <input name="sex" type="radio" value="sex" checked/>男
+                        <input name="sex" type="radio" value="sex"/>女
+                    </td>
+                </tr>
+                <tr bgcolor="#FFFFFF" align="center">
+                    <td width='15%' name='projectName'>
+                        名族
+                    </td>
+                    <td width='35%' name='nation'>
+                        <select>
+                            <option>汉族</option>
+                            <option>满族</option>
+                            <option>傣族</option>
+                            <option>高山族</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr bgcolor="#FFFFFF" align="center">
+                    <td width='15%'>
+                        学历
+                    </td>
+                    <td width='35%' name='nation'>
+                        <select>
+                            <option>专科</option>
+                            <option>本科</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr bgcolor="#FFFFFF" align="center">
+                    <td width='15%'>
+                        英语等级
+                    </td>
+                    <td width='35%' name='nation'>
+                        <select>
+                            <option>四级</option>
+                            <option>六级</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr bgcolor="#FFFFFF" align="center">
+                    <td width='15%' name='projectName'>
+                        政治面貌
+                    </td>
+                    <td width='35%' name='politics'>
+                        <select>
+                            <option>共青团员</option>
+                            <option>中共预备党员</option>
+                            <option>中共党员</option>
+                            <option>群众</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr bgcolor="#FFFFFF" align="center">
+                    <td width='15%' name='projectName'>
+                        籍贯
+                    </td>
+                    <td width='35%' name='birthplace'>
+                        <select>
+                            <option>南昌市</option>
+                            <option>赣州市</option>
+                            <option>宜春市</option>
+                            <option>高安市</option>
+                        </select>
+                    </td>
+                <tr bgcolor="#FFFFFF" align="center">
+                    <td colspan="2"><input type="button" value="查询"/></td>
+                </tr>
+                </tr>
+
+            </table>
+
+        </div>
+    </div>
+</form>
+
+<div style="overflow-x: auto; overflow-y: auto;width:100%;display: none" id="editMsg">
+    <table width="150%" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+            <td height="40" class="font42">
+                <form action="#" method="post" id="editMsgs">
+                    <table border="0" cellpadding="4"
+                           cellspacing="1" bgcolor="#464646" class="demo" id="entryStuBasicInfo">
+                        <tr class="CTitle" align="center">
+                            <td height="22" colspan="17" align="center"
+                                style="font-size: 16px">
+                                学生基本信息录入表
+                            </td>
+                        </tr>
+                        <tr bgcolor="#EEEEEE" align="center">
+
+                            <th width="4%">
+                                <center>学号</center>
+                            </th>
+                            <th width="3%">
+                                <center>姓名</center>
+                            </th>
+                            <th width="5%">
+                                <center>专业</center>
+                            </th>
+                            <th width="5%">
+                                <center>班级</center>
+                            </th>
+                            <th width="3%">
+                                <center>性别</center>
+                            </th>
+                            <th width="3%">
+                                <center>民族</center>
+                            </th>
+                            <th width="3%">
+                                <center>籍贯</center>
+                            </th>
+                            <th width="5%">
+                                <center>政治面貌</center>
+                            </th>
+                            <th width="7%">
+                                <center>身份证号码</center>
+                            </th>
+                            <th width="4%">
+                                <center>学历</center>
+                            </th>
+                            <th width="5%">
+                                <center>英语等级</center>
+                            </th>
+                            <th width="8%">
+                                <center>担任职务及时间</center>
+                            </th>
+                            <th width="7%">
+                                <center>银行卡号</center>
+                            </th>
+                        </tr>
+                        <tr bgcolor="#EEEEEE" align="center">
+                            <td colspan="14" style="padding:1px">
+                                <button type="button" onclick="Add()">提交</button>
+                                <button type="button" onclick="exchange('allbasicMsg','editMsg')">
+                                    取消
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                    {% csrf_token %}
+                </form>
+
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+<!--查看学生详细基本信息-->
+<div id="setexInfoDiv" style="display: none"></div>
+<div id="getexStuBasicInfoDiv" style="display: none">
+    <h2>学生基本信息<a href="#" id="CloseSchStuexDiv">关闭</a></h2>
+    <div class="form">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+<div class="row" style="margin-top:20px;">
+
+
+             <div class="col-md-4">
+                 <p>excel文件与标题格式相对应</p>
+                 <input id="paper_file" name="paper_file" type="file">
+
+             </div>
+
+              <table border="0" cellpadding="4"
+                           cellspacing="1" bgcolor="#464646" class="demo">
+
+
+                        <tr class="CTitle" align="center">
+                            <td height="22" colspan="17" align="center"
+                                style="font-size: 16px">
+                                学生基本信息录入表
+                            </td>
+                        </tr>
+                        <tr bgcolor="#EEEEEE" align="center">
+
+                            <th width="4%">
+                                <center>学号</center>
+                            </th>
+                            <th width="3%">
+                                <center>姓名</center>
+                            </th>
+                            <th width="5%">
+                                <center>专业</center>
+                            </th>
+                            <th width="5%">
+                                <center>班级</center>
+                            </th>
+                            <th width="3%">
+                                <center>性别</center>
+                            </th>
+                            <th width="3%">
+                                <center>民族</center>
+                            </th>
+                            <th width="3%">
+                                <center>籍贯</center>
+                            </th>
+                            <th width="5%">
+                                <center>政治面貌</center>
+                            </th>
+                            <th width="7%">
+                                <center>身份证号码</center>
+                            </th>
+                            <th width="4%">
+                                <center>学历</center>
+                            </th>
+                            <th width="5%">
+                                <center>英语等级</center>
+                            </th>
+                            <th width="8%">
+                                <center>担任职务及时间</center>
+                            </th>
+                            <th width="7%">
+                                <center>银行卡号</center>
+                            </th>
+                        </tr>
+                        <tr bgcolor="#EEEEEE" align="center">
+                            <td colspan="14" style="padding:1px">
+                                <button type="button" id="btn_import_paper">提交</button>
+
+                            </td>
+                        </tr>
+                    </table>
+        </form>
+
+    </div>
+</div>
+</body>
+</html>

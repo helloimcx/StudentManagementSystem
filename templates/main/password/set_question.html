@@ -1,0 +1,24 @@
+{% extends 'main/password/base.html' %}
+
+{% block content %}
+    <form action="{% url 'main:set_new_question' username %}"" method="post">
+    {% csrf_token %}
+        <div class="form-group">
+            <label for="personalId">身份证后六位</label>
+            <input id="personalId" name="personal_id" type="text" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="question">密保问题</label>
+            <select name="question_id" class="form-control">
+                {% for question in questions %}
+                    <option value="{{ question.questionNo }}">{{ question.question }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="answer">密保答案</label>
+            <input id="answer" name="answer" type="text" class="form-control" required>
+        </div>
+    <button type="submit" class="btn btn-primary btn-block">提交</button>
+    </form>
+{% endblock %}

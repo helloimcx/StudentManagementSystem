@@ -1,0 +1,55 @@
+<tr bgcolor="#FFFFFF">
+    <td width="6%">学号</td>
+    <td width="6%">{{ Stuinfo.studentNo }}</td>
+    <td width="6%">姓名</td>
+    <td width="6%"><input name="student_name" value="{{ Stuinfo.studentName }}" readOnly="readonly" ></td>
+    <td width="6%">性别</td>
+    <td width="6%"> <input name="sex" value="{% if Stuinfo.sex == 1 %}男{% else %}女{% endif %}" readOnly="readonly" ></td>
+    <td width="8%" rowspan="4"><img src="/media/{{  Stuinfo.photo}}" width="150px" height="150px"></td>
+    <input type="hidden" value="{{ Stuinfo.studentNo  }}" name="studentNo" id="studentNo">
+</tr>
+<tr bgcolor="#EEEEEE">
+    <td width="6%">学院</td>
+    <td width="6%" ><input name="college" value="{{ Stuinfo.college }}" readOnly="readonly" ></td>
+    <td width="6%">专业</td>
+    <td width="6%"><input name="major" value="{{ Stuinfo.major }}" readOnly="readonly" ></td>
+    <td width="6%">班级</td>
+    <td width="6%"><input name="class_name" value="{{ Stuinfo.ClassName }}" readOnly="readonly" ></td>
+</tr>
+<tr bgcolor="#FFFFFF">
+    <td width="6%">出生日期</td>
+    <td width="6%">{{ Stuinfo.birthday  }}</td>
+    <td width="6%">民族</td>
+    <td width="6%"><input name="nation" value="{{ Stuinfo.nation }}" readOnly="readonly" ></td>
+    <td width="6%">籍贯</td>
+    <td width="6%"><input name="hometown" value="{{ Stuinfo.hometown }}" readOnly="readonly" ></td>
+</tr>
+<tr bgcolor="#EEEEEE">
+    <td width="6%">政治面貌</td>
+    <td width="6%"><input name="political" value="{{ Stuinfo.political }}" readOnly="readonly" ></td>
+    <td width="6%">个人邮箱</td>
+    <td  width="6%"><input name="email" value="{{ Stuinfo.email }}" readOnly="readonly" ></td>
+    <td width="6%">学历</td>
+    <td width="6%"><input name="eduBackground" value="{{Stuinfo.eduBackground}}" readOnly="readonly" ></td>
+</tr>
+<tr bgcolor="#FFFFFF">
+    <td width="6%">电话</td>
+    <td width="6%"><input name="telephone" value="{{ Stuinfo.telephone }}" readOnly="readonly" s></td>
+    <td width="6%">银行卡号</td>
+    <td  colspan="2" width="6%" ><input name="bankcard" value="{{  Stuinfo.bankcard}}" readOnly="readonly" ></td>
+    <td width="6%">身份证号</td>
+    <td width="6%"><input name="id_card" value="{{ Stuinfo.idcard }}" readOnly="readonly" ></td>
+</tr>
+<tr bgcolor="#EEEEEE">
+    <td width="6%">家庭联系人</td>
+    <td width="6%"><input name="family" value="{{ Stuinfo.family}}" readOnly="readonly" style="border: white"></td>
+    <td width="6%">家庭现住址</td>
+    <td  colspan="2" width="6%" ><input name="address" value="{{ Stuinfo.address }}" readOnly="readonly" ></td>
+    <td width="6%">家庭联系电话</td>
+    <td width="6%"><input name="family_phone" value="{{ Stuinfo.fphone }}" readOnly="readonly" ></td>
+</tr>
+<tr bgcolor="#FFFFFF">
+    <td width="6%">英语等级</td>
+    <td width="6%" colspan="6"><input name="englishlevel" value="{{ Stuinfo.englishlevel }}" readOnly="readonly"></td>
+
+</tr>

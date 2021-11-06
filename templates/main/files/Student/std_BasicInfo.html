@@ -1,0 +1,381 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>基本信息</title>
+    <link rel="stylesheet" rev="stylesheet" href="/static/css/style.css"
+          type="text/css" media="all"/>
+    <link href="/static/css/css.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/css/arrow.css" rel="stylesheet" type="text/css"/>
+
+    <script type="text/javascript">
+
+        var menuids = ["suckertree1"]
+
+        function buildsubmenus() {
+            for (var i = 0; i < menuids.length; i++) {
+                var ultags = document.getElementById(menuids[i]).getElementsByTagName(
+                    "ul")
+                for (var t = 0; t < ultags.length; t++) {
+                    ultags[t].parentNode.getElementsByTagName("a")[0].className = "subfolderstyle"
+                    ultags[t].parentNode.onmouseover = function () {
+                        this.getElementsByTagName("ul")[0].style.display = "block"
+                    }
+                    ultags[t].parentNode.onmouseout = function () {
+                        this.getElementsByTagName("ul")[0].style.display = "none"
+                    }
+                }
+            }
+        }
+
+        if (window.addEventListener)
+            window.addEventListener("load", buildsubmenus, false)
+        else if (window.attachEvent)
+            window.attachEvent("onload", buildsubmenus)</script>
+    <script language=JavaScript>
+
+            function viewmypic(mypic, imgfile) {
+                if (imgfile.value) {
+                    mypic.src = imgfile.value;
+                    mypic.style.display = "";
+                    mypic.border = 1;
+                }
+            }
+
+        function sousuo() {
+            window
+                .open(
+                    "gaojisousuo.htm",
+                    "",
+                    "depended=0,alwaysRaised=1,width=800,height=510,location=0,menubar=0,resizable=0,scrollbars=0,status=0,toolbar=0");
+        }
+
+        function selectAll() {
+            var obj = document.fom.elements;
+            for (var i = 0; i < obj.length; i++) {
+                if (obj[i].name == "delid") {
+                    obj[i].checked = true;
+                }
+            }
+        }
+
+        function unselectAll() {
+            var obj = document.fom.elements;
+            for (var i = 0; i < obj.length; i++) {
+                if (obj[i].name == "delid") {
+                    if (obj[i].checked == true)
+                        obj[i].checked = false;
+                    else
+                        obj[i].checked = true;
+                }
+            }
+        }
+
+        function link() {
+            document.getElementById("fom").action = "../addrenwu.htm";
+            document.getElementById("fom").submit();
+        }
+    </script>
+    <script src=/static/js/jquery-1.7.2.min.js">
+    </script>
+    <script src="/static/js/testSearch.js">
+    </script>
+    <script src="/static/js/provincesdata.js">
+    </script>
+    <script src="/static/js/jquery.provincesCity.js">
+    </script>
+    <style type="text/css">
+        .STYLE1 {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .STYLE2 {
+            font-size: 16px
+        }
+
+        .STYLE3 {
+            color: #FFFFFF
+        }
+    </style>
+</head>
+<SCRIPT language=JavaScript>
+    function tupian(idt) {
+        var nametu = "xiaotu" + idt;
+        var tp = document.getElementById(nametu);
+        tp.src = "/images/ico05.gif";//Í¼Æ¬ico04Îª°×É«µÄÕý·½ÐÎ
+
+        for (var i = 1; i < 30; i++) {
+
+            var nametu2 = "xiaotu" + i;
+            if (i != idt * 1) {
+                var tp2 = document.getElementById('xiaotu' + i);
+                if (tp2 != undefined) {
+                    tp2.src = "../images/ico06.gif";
+                }//Í¼Æ¬ico06ÎªÀ¶É«µÄÕý·½ÐÎ
+            }
+        }
+    }
+
+    function list(idstr) {
+        var name1 = "subtree" + idstr;
+        var name2 = "img" + idstr;
+        var objectobj = document.all(name1);
+        var imgobj = document.all(name2);
+
+
+        //alert(imgobj);
+
+        if (objectobj.style.display == "none") {
+            for (i = 1; i < 10; i++) {
+                var name3 = "img" + i;
+                var name = "subtree" + i;
+                var o = document.all(name);
+                if (o != undefined) {
+                    o.style.display = "none";
+                    var image = document.all(name3);
+                    //alert(image);
+                    image.src = "/images/ico04.gif";
+                }
+            }
+            objectobj.style.display = "";
+            imgobj.src = "../../images/ico03.gif";
+        }
+        else {
+            objectobj.style.display = "none";
+            imgobj.src = "/images/ico04.gif";
+        }
+    }
+
+
+
+</SCRIPT>
+  <script>
+        //打印表格
+        var idTmr;
+
+        function getExplorer() {
+            var explorer = window.navigator.userAgent;
+            //ie
+            if(explorer.indexOf("MSIE") >= 0) {
+                return 'ie';
+            }
+            //firefox
+            else if(explorer.indexOf("Firefox") >= 0) {
+                return 'Firefox';
+            }
+            //Chrome
+            else if(explorer.indexOf("Chrome") >= 0) {
+                return 'Chrome';
+            }
+            //Opera
+            else if(explorer.indexOf("Opera") >= 0) {
+                return 'Opera';
+            }
+            //Safari
+            else if(explorer.indexOf("Safari") >= 0) {
+                return 'Safari';
+            }
+        }
+
+        function Cleanup() {
+            window.clearInterval(idTmr);
+            CollectGarbage();
+        }
+        var tableToExcel = (function() {
+            var uri = 'data:application/vnd.ms-excel;base64,',
+                template = '<html><head><meta charset="UTF-8"></head><body><table  border="1">{table}</table></body></html>',
+                base64 = function(
+                    s) {
+                    return window.btoa(unescape(encodeURIComponent(s)))
+                },
+                format = function(s, c) {
+                    return s.replace(/{(\w+)}/g, function(m, p) {
+                        return c[p];
+                    })
+                }
+            return function(table, name) {
+                if(!table.nodeType)
+                    table = document.getElementById(table)
+                var ctx = {
+                    worksheet: name || 'Worksheet',
+                    table: table.innerHTML
+                }
+                window.location.href = uri + base64(format(template, ctx))
+            }
+        })()
+    </script>
+<body>
+<div id="lurubiao" style="margin-left:10px">
+    <table width="99%" border="0" cellpadding="4" cellspacing="1"
+           class="newfont03">
+        <tr>
+            <td class="tablestyle_title" width="15%">
+                <div align="left">
+                    <span class="STYLE1">基本信息</span>
+                </div>
+            </td>
+            <td class="tablestyle_title" width="84%">
+                <div class="suckerdiv" align="left">
+                    <ul id="suckertree1">
+                        <li><a href="#">信息操作</a>
+                            <ul>
+                                <li><a href="{% url 'student:baseinfo'%}">查看信息</a></li>
+                                <li><a href="{% url 'student:modifyinfo'%}">修改常用信息</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <table width="100%" border="1" cellpadding="4" cellspacing="0" class="newfont03"
+                       style="border-collapse:collapse" id="dataTable">
+                    {% if Stuinfo %}
+                    <tr>
+                        <td>
+                            <div align="center" class="STYLE1"> 学号</div>
+                        </td>
+                        <td>
+                            <div align="center" class="STYLE2">{{ Stuinfo.studentNo }}</div>
+                        </td>
+                        <td>
+                            <div align="center" class="STYLE1">姓名</div>
+                        </td>
+                        <td>
+                            <div align="center" class="STYLE2">{{  Stuinfo.studentName}}</div>
+                        </td>
+                        <td>
+                            <div align="center" class="STYLE1">性别</div>
+                        </td>
+                        <td>
+                            <div align="center" class="STYLE2">{% if Stuinfo.sex == 0 %}女{% else %}男{% endif %}</div>
+                        </td>
+                        <td colspan="2" rowspan="5" class="STYLE2">
+                            <div align="center"><img src="/media/{{  Stuinfo.photo}}" alt="protrait" width="90" height="120"/>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div align="center" class="STYLE1">民族</div>
+                        </td>
+                        <td>
+                            <div align="center" class="STYLE2">{{ Stuinfo.nation }}</div>
+                        </td>
+                        <td>
+                            <div align="center" class="STYLE1">籍贯</div>
+                        </td>
+                        <td>
+                            <div align="center" class="STYLE2">{{ Stuinfo.hometown }}</div>
+                        </td>
+                        <td>
+                            <div align="center" class="STYLE1">政治面貌</div>
+                        </td>
+                        <td>
+                            <div align="center" class="STYLE2">{{ Stuinfo.political }}</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div align="center" class="STYLE1">学院</div>
+                        </td>
+                        <td>
+                            <div align="center" class="STYLE2">{{ Stuinfo.college }}</div>
+                        </td>
+                        <td>
+                            <div align="center" class="STYLE1">专业方向</div>
+                        </td>
+                        <td>
+                            <div align="center" class="STYLE2">{{ Stuinfo.major }}</div>
+                        </td>
+                        <td>
+                            <div align="center" class="STYLE1">班级</div>
+                        </td>
+                        <td>
+                            <div align="center" class="STYLE2">{{ Stuinfo.ClassName }}</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div align="center" class="STYLE1">身份证号</div>
+                        </td>
+                        <td>
+                            <div align="center" class="STYLE2">{{ Stuinfo.idcard }}</div>
+                        </td>
+                        <td>
+                            <div align="center" class="STYLE1">手机号</div>
+                        </td>
+                        <td>
+                            <div align="center" class="STYLE2">{{ Stuinfo.telephone }}</div>
+                        </td>
+                        <td>
+                            <div align="center" class="STYLE1">个人邮箱</div>
+                        </td>
+                        <td>
+                            <div align="center" class="STYLE2">{{ Stuinfo.email }}</div>
+                        </td>
+                    </tr>
+                    <tr>
+
+                        <td>
+                            <div align="center" class="STYLE1">家庭联系人</div>
+                        </td>
+                        <td>
+                            <div align="center" class="STYLE2">{{ Stuinfo.family }}</div>
+                        </td>
+                        <td>
+                            <div align="center" class="STYLE1">家庭地址</div>
+                        </td>
+                        <td colspan="3">
+                            <div align="center" class="STYLE2">{{ Stuinfo.address }}</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div align="center" class="STYLE1">家庭联系电话</div>
+                        </td>
+                        <td>
+                            <div align="center" class="STYLE2">{{ Stuinfo.fphone }}</div>
+                        </td>
+                        <td>
+                            <div align="center" class="STYLE1">学历</div>
+                        </td>
+                        <td>
+                            <div align="center" class="STYLE2">{{ Stuinfo.eduBackground }}</div>
+                        </td>
+                        <td>
+                            <div align="center" class="STYLE1">英语等级</div>
+                        </td>
+                        <td colspan="3">
+                            <div align="center" class="STYLE2">{{ Stuinfo.englishlevel }}</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div align="center" class="STYLE1">银行卡号</div>
+                        </td>
+                        <td>
+                            <div align="center" class="STYLE2">{{ Stuinfo.bankcard }}</div>
+                        </td>
+                        <td>
+                            <div align="center" class="STYLE1">担任职务及时间</div>
+                        </td>
+                        <td colspan="4">
+                            <div align="center" class="STYLE2">{{ Stuinfo.remarks }}</div>
+                        </td>
+                    </tr>
+                </table>
+                    {% else %}
+                        还没有你的信息！
+                    {% endif  %}
+            </td>
+        </tr>
+
+    </table>
+</div>
+</body>
+</html>
