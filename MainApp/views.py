@@ -64,7 +64,8 @@ def index(request):
             return render(request, 'main/index_student.html')
         elif role == 2:
             # 老师
-            return redirect('/student/baseinfo')
+            return redirect(reverse('student:baseinfo'))
+            # return redirect('/student/baseinfo')
     else:
         return HttpResponse('不支持POST请求！')
 

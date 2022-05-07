@@ -1,24 +1,24 @@
+{% load static %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>学生信息管理系统</title>
-    <link href="/static/css/css.css" rel="stylesheet" type="text/css"/>
-    <link href="/static/css/style.css" rel="stylesheet" type="text/css"/>
-    <link href="/static/css/arrow.css" rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" type="text/css" href="/static/css/college/tanchu.css">
-    <link rel="stylesheet" type="text/css" href="/static/css/school/tanchu.css"><!-- 需要放到公共的js包下-->
-    <script type="text/javascript" src="/static/js/school/jquery-1.10.2-vsdoc.js"></script>
-    <script src="/static/js/jquery-1.10.2.min.js"></script>
-    <script src="/static/js/jquery-1.10.2.js"></script>
-    <script src="/static/js/provincesdata.js"></script>
-    <script src="/static/js/jquery.provincesCity.js"></script>
-    <script src="/static/js/jquery.chromatable.js"></script>
-    <script type="text/javascript" src="/static/js/school/school.js"></script>
-    <script src="/static/js/jquery-1.10.2.min.js"></script>
-    <script src="/static/js/college/college.js"></script>
-    <script src="/static/js/college/entry.js"></script>
+    <link href="{% static 'css/css.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'css/arrow.css' %}" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/college/tanchu.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/school/tanchu.css' %}">
+    <script type="text/javascript" src="{% static 'js/school/jquery-1.10.2-vsdoc.js' %}"></script>
+    <script src="{% static 'js/jquery-1.10.2.min.js' %}"></script>
+    <script src="{% static 'js/jquery-1.10.2.js' %}"></script>
+    <script src="{% static 'js/provincesdata.js' %}"></script>
+    <script src="{% static 'js/jquery.provincesCity.js' %}"></script>
+    <script src="{% static 'js/jquery.chromatable.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/school/school.js' %}"></script>
+    <script src="{% static 'js/college.js' %}"></script>
+    <script src="{% static 'js/college/entry.js' %}"></script>
     <style type="text/css">
         * {
             margin: 0;

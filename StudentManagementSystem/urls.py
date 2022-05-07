@@ -18,10 +18,13 @@ from django.contrib import admin
 from django.urls import path, include
 import MainApp.views as views
 from StudentManagementSystem import settings
+from django.views.static import serve
+from .settings import MEDIA_ROOT
 
 urlpatterns = [
     path('', views.index_redirect),
     path('main/', include('MainApp.urls')),
     path('admin/', admin.site.urls),
     path('student/', include('StudentMessage.urls')),
-]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path(r'media/<path:path>', serve, {'document_root': MEDIA_ROOT})
+]

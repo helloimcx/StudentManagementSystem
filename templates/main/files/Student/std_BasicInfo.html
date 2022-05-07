@@ -1,14 +1,15 @@
+{% load static %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>基本信息</title>
-    <link rel="stylesheet" rev="stylesheet" href="/static/css/style.css"
+    <link rel="stylesheet" rev="stylesheet" href="{% static 'css/style.css' %}"
           type="text/css" media="all"/>
-    <link href="/static/css/css.css" rel="stylesheet" type="text/css"/>
-    <link href="/static/css/style.css" rel="stylesheet" type="text/css"/>
-    <link href="/static/css/arrow.css" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'css/css.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'css/arrow.css' %}" rel="stylesheet" type="text/css"/>
 
     <script type="text/javascript">
 
@@ -78,13 +79,10 @@
             document.getElementById("fom").submit();
         }
     </script>
-    <script src=/static/js/jquery-1.7.2.min.js">
+    <script src={% static 'js/testSearch.js' %}></script>
+    <script src={% static 'js/provincesdata.js' %}>
     </script>
-    <script src="/static/js/testSearch.js">
-    </script>
-    <script src="/static/js/provincesdata.js">
-    </script>
-    <script src="/static/js/jquery.provincesCity.js">
+    <script src={% static 'js/jquery.provincesCity.js' %}>
     </script>
     <style type="text/css">
         .STYLE1 {
